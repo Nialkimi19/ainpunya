@@ -1,0 +1,201 @@
+# Creating the HTML file with the provided content for the user
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For My Baby Bunny 💜</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #6a0dad, #a060d5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 20px;
+  }
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+  .question-box {
+    background: rgba(255 255 255 / 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 700px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px #a060d5aa;
+  }
+  .answers button {
+    background: #9a27ffcc;
+    border: none;
+    margin: 10px 10px 0 0;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .answers button:hover {
+    background: #d28aff;
+  }
+  #final-message {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+  /* Floating image styles */
+  .floating {
+    position: fixed;
+    pointer-events: none;
+    user-select: none;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  /* Animations */
+  @keyframes float1 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px) translateX(10px); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(15px) translateX(-10px); }
+  }
+  @keyframes float3 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px) translateX(-15px); }
+  }
+
+  /* Positions and sizes */
+  #dino {
+    width: 60px;
+    top: 10%;
+    left: 5%;
+    animation: float1 5s infinite;
+  }
+  #heart {
+    width: 50px;
+    top: 70%;
+    right: 10%;
+    animation: float2 6s infinite;
+  }
+  #seal {
+    width: 70px;
+    top: 40%;
+    right: 40%;
+    animation: float3 7s infinite;
+  }
+  /* Music control button */
+  #music-control {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #9a27ffcc;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #d28aff;
+    user-select: none;
+  }
+  #music-control:hover {
+    background: #d28aff;
+  }
+</style>
+</head>
+<body>
+
+<h1>For My Baby Bunny 🐰💜</h1>
+<div class="question-box" id="content">
+
+  <h2 id="question">Do you love me, Baby?</h2>
+  <div class="answers">
+    <button onclick="nextQuestion('Yes, Bunny 💖')">Yes, Bunny 💖</button>
+    <button onclick="nextQuestion('Of course, Baby 💘')">Of course, Baby 💘</button>
+  </div>
+
+</div>
+
+<!-- Floating animated images -->
+<img src="https://i.imgur.com/NG07Qbt.png" alt="Dinosaur" class="floating" id="dino" />
+<img src="https://i.imgur.com/29xjw6u.png" alt="Heart" class="floating" id="heart" />
+<img src="https://i.imgur.com/Op6fDNM.png" alt="Sea Lion" class="floating" id="seal" />
+
+<!-- Audio player hidden -->
+<audio id="bg-music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/19/audio_5b46dbe7b9.mp3?filename=bruno-mars-just-the-way-you-are-2021-remix-14927.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<button id="music-control" onclick="toggleMusic()">Play Music 🎵</button>
+
+<script>
+  const questions = [
+    {
+      q: "Do you love me, Baby?",
+      answers: ["Yes, Bunny 💖", "Of course, Baby 💘"],
+      next: 1
+    },
+    {
+      q: "Will you be my forever?",
+      answers: ["Always, Bunny 💜", "Forever and ever, Baby 💝"],
+      next: 2
+    },
+    {
+      q: "What’s your favorite thing about us?",
+      answers: ["Your smile lights my world", "Your gentle heart"],
+      next: 3
+    },
+    {
+      q: "Do you want to create many beautiful memories together?",
+      answers: ["Yes, let's cherish every moment", "I can’t wait for our future"],
+      next: 4
+    },
+    {
+      q: "Any last words, Baby?",
+      answers: [],
+      next: null,
+      finalMessage: `There are moments in life that seem to pause time itself. Moments when everything aligns and the heart whispers, “This is where I belong.” Having you here, close to me, is one of those rare and beautiful moments. As I write this, my heart overflows with emotion because simply having you near fills every corner of my world with light, warmth, and an unspeakable joy.
+
+You are not just a guest in this place. You are the reason it feels like home. Your presence brings a peace that no words can describe. When you smile, it feels as if the sun itself has decided to stay a little longer just to bask in your glow. And when you speak, even the quiet listens, because there is something in your voice that soothes the soul.
+
+I often think about how life brought us together, how so many little things aligned perfectly just for us to meet. Maybe it was fate or maybe it was the universe’s way of telling me that love, real and true and soul deep, was meant to be found in you. Whatever the reason, I thank the stars every day that you walked into my life and brought with you a kind of love I never even dared to dream of.
+
+Having you here now, sharing this space and these moments, even the simplest of routines, makes everything feel more meaningful. Every cup of tea, every walk, every silence we share it all feels sacred because it is shared with you. You turn the ordinary into something magical. Even your quietest presence makes everything feel more alive.
+
+You are the kind of person who leaves traces of love wherever you go. Not just in grand gestures, but in the smallest acts. The way you look into my eyes and truly see me. The way you laugh like the world is still full of wonder. The way you care for others with a depth that asks for nothing in return. These things do not go unnoticed. They are etched into my heart.
+
+There is a softness in you that disarms every part of me that was ever afraid of being truly seen. And because of you, I have learned that love is not loud or boastful. It is gentle. It is consistent. It is present even in the silence. It is the way you make a space feel safe, the way your hand fits perfectly into mine, the way your presence alone can make a difficult day feel lighter.
+
+I want you to know that your presence here means more than I could ever say. You are cherished more deeply than words can express. You are welcome here not just in body, but in spirit, in soul, in every way. I hope this space feels like a reflection of the warmth and care I feel for you. Because you, my love, are a blessing. You are a miracle. And having you here, close to me, is one of the greatest joys I have ever known.
+`
+    }
+  ];
+
+  let currentIndex = 0;
+
+  function nextQuestion(answer) {
+    if (currentIndex === questions.length - 1) return; // last, do nothing
+    currentIndex++;
+    const q = questions[currentIndex];
+
+    if (q.finalMessage) {
+      document.getElementById('content').innerHTML = `<div id="final-message">${q.finalMessage}</div>`;
+    } else {
+      document.getElementById('question').textContent = q.q;
+      const answersDiv = document.querySelector('.answers');
+      answersDiv.innerHTML = '';
+      q.answers.forEach(a => {
+        const btn = document.createElement('button');
+        btn.textContent = a;
+        btn.onclick = () => nextQuestion(a);
+        answersDiv.appendChild(btn);
+      });
+    }
+  }
+
+  // Music
