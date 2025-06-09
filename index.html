@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Baby Bunny 💜</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #6a0dad, #a060d5);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .question-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin: auto;
+      max-width: 600px;
+      box-shadow: 0 0 15px #ffffff33;
+    }
+    button {
+      background: #9a27ff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 25px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #d28aff;
+    }
+    #final-message {
+      white-space: pre-wrap;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>For My Baby Bunny 🐰💜</h1>
+  <div class="question-box" id="quiz">
+    <h2 id="question">Do you love me, Baby?</h2>
+    <div id="answers">
+      <button onclick="nextQuestion()">Yes, Bunny 💖</button>
+      <button onclick="nextQuestion()">Of course, Baby 💘</button>
+    </div>
+  </div>
+
+  <audio id="music" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/19/audio_5b46dbe7b9.mp3?filename=bruno-mars-just-the-way-you-are-2021-remix-14927.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const questions = [
+      {
+        text: "Do you love me, Baby?",
+        answers: ["Yes, Bunny 💖", "Of course, Baby 💘"]
+      },
+      {
+        text: "Will you be my forever?",
+        answers: ["Always, Bunny 💜", "Forever and ever, Baby 💝"]
+      },
+      {
+        text: "What’s your favorite thing about us?",
+        answers: ["Your smile lights my world", "Your gentle heart"]
+      },
+      {
+        text: "Do you want to create many beautiful memories together?",
+        answers: ["Yes, let's cherish every moment", "I can’t wait for our future"]
+      },
+      {
+        finalMessage: `There are moments in life that seem to pause time itself. Moments when everything aligns and the heart whispers, “This is where I belong.” Having you here, close to me, is one of those rare and beautiful moments. As I write this, my heart overflows with emotion because simply having you near fills every corner of my world with light, warmth, and an unspeakable joy.
+
+You are not just a guest in this place. You are the reason it feels like home. Your presence brings a peace that no words can describe. When you smile, it feels as if the sun itself has decided to stay a little longer just to bask in your glow. And when you speak, even the quiet listens, because there is something in your voice that soothes the soul.
+
+I often think about how life brought us together, how so many little things aligned perfectly just for us to meet. Maybe it was fate or maybe it was the universe’s way of telling me that love, real and true and soul deep, was meant to be found in you. Whatever the reason, I thank the stars every day that you walked into my life and brought with you a kind of love I never even dared to dream of.
+
+Having you here now, sharing this space and these moments, even the simplest of routines, makes everything feel more meaningful. Every cup of tea, every walk, every silence we share—it all feels sacred because it is shared with you. You turn the ordinary into something magical. Even your quietest presence makes everything feel more alive.
+
+You are the kind of person who leaves traces of love wherever you go. Not just in grand gestures, but in the smallest acts. The way you look into my eyes and truly see me. The way you laugh like the world is still full of wonder. The way you care for others with a depth that asks for nothing in return. These things do not go unnoticed. They are etched into my heart.
+
+There is a softness in you that disarms every part of me that was ever afraid of being truly seen. And because of you, I have learned that love is not loud or boastful. It is gentle. It is consistent. It is present even in the silence. It is the way you make a space feel safe, the way your hand fits perfectly into mine, the way your presence alone can make a difficult day feel lighter.
+
+I want you to know that your presence here means more than I could ever say. You are cherished more deeply than words can express. You are welcome here not just in body, but in spirit, in soul, in every way. I hope this space feels like a reflection of the warmth and care I feel for you. Because you, my love, are a blessing. You are a miracle. And having you here, close to me, is one of the greatest joys I have ever known.`
+      }
+    ];
+
+    let current = 0;
+
+    function nextQuestion() {
+      current++;
+      const container = document.getElementById('quiz');
+
+      if (questions[current]?.finalMessage) {
+        container.innerHTML = `<div id="final-message">${questions[current].finalMessage}</div>`;
+        return;
+      }
+
+      const q = questions[current];
+      document.getElementById('question').textContent = q.text;
+      const answersDiv = document.getElementById('answers');
+      answersDiv.innerHTML = '';
+      q.answers.forEach(ans => {
+        const btn = document.createElement('button');
+        btn.textContent = ans;
+        btn.onclick = nextQuestion;
+        answersDiv.appendChild(btn);
+      });
+    }
+  </script>
+</body>
+</html>
